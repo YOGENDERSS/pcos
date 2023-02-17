@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- <a rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <a rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <a rel="stylesheet" href="style.css">
+  <a rel="preconnect" href="https://fonts.gstatic.com"> -->
+  <a href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    <script>
+        $.fn.upform = function() {
+    var $this = $(this);
+    var container = $this.find(".upform-main");
+  
+    $(document).ready(function() {
+      $(container).find(".input-block").first().click();
+    });
+  
+    $($this).find("form").submit(function() {
+      return false;
+    });
+  
+    $(container)
+      .find(".input-block")
+      .not(".input-block input")
+      .on("click", function() {
+      rescroll(this);
+    });
+  
+    $(container).find(".input-block input").keypress(function(e) {
+      if (e.which == 13) {
+        if ($(this).hasClass("required") && $(this).val() == "") {
+        } else moveNext(this);
+      }
+    });
+  
+    $(container).find('.input-block input[type="radio"]').change(function(e) {
+      moveNext(this);
+    });
+  
+    $(window).on("scroll", function() {
+      $(container).find(".input-block").each(function() {
+        var etop = $(this).offset().top;
+        var diff = etop - $(window).scrollTop();
+  
+        if (diff > 100 && diff < 300) {
+          reinitState(this);
+        }
+      });
+    });
+  
+    function reinitState(e) {
+      $(container).find(".input-block").removeClass("active");
+  
+      $(container).find(".input-block input").each(function() {
+        $(this).blur();
+      });
+      $(e).addClass("active");
+      /*$(e).find('input').focus();*/
+    }
+  
+    function rescroll(e) {
+      $(window).scrollTo($(e), 200, {
+        offset: { left: 100, top: -200 },
+        queue: false
+      });
+    }
+  
+    function reinit(e) {
+      reinitState(e);
+      rescroll(e);
+    }
+  
+    function moveNext(e) {
+      $(e).parent().parent().next().click();
+    }
+  
+    function movePrev(e) {
+      $(e).parent().parent().prev().click();
+    }
+  };
+  
+  $(".upform").upform();
+  $.fn.upform = function() {
+    var $this = $(this);
+    var container = $this.find(".upform-main");
+  
+    $(document).ready(function() {
+      $(container).find(".input-block").first().click();
+    });
+  
+    $($this).find("form").submit(function() {
+      return false;
+    });
+  
+    $(container)
+      .find(".input-block")
+      .not(".input-block input")
+      .on("click", function() {
+        rescroll(this);
+      });
+  
+    $(container).find(".input-block input").keypress(function(e) {
+      if (e.which == 13) {
+        if ($(this).hasClass("required") && $(this).val() == "") {
+        } else moveNext(this);
+      }
+    });
+  
+    $(container).find('.input-block input[type="radio"]').change(function(e) {
+      moveNext(this);
+    });
+  
+    $(window).on("scroll", function() {
+      $(container).find(".input-block").each(function() {
+        var etop = $(this).offset().top;
+        var diff = etop - $(window).scrollTop();
+  
+        if (diff > 100 && diff < 300) {
+          reinitState(this);
+        }
+      });
+    });
+  
+    function reinitState(e) {
+      $(container).find(".input-block").removeClass("active");
+  
+      $(container).find(".input-block input").each(function() {
+        $(this).blur();
+      });
+      $(e).addClass("active");
+      /*$(e).find('input').focus();*/
+    }
+  
+    function rescroll(e) {
+      $(window).scrollTo($(e), 200, {
+        offset: { left: 100, top: -200 },
+        queue: false
+      });
+    }
+  
+    function reinit(e) {
+      reinitState(e);
+      rescroll(e);
+    }
+  
+    function moveNext(e) {
+      $(e).parent().parent().next().click();
+    }
+  
+    function movePrev(e) {
+      $(e).parent().parent().prev().click();
+    }
+  };
+  
+  $(".upform").upform();
+  
+
+    </script>
+</head>
+<style>
+
+  
+
+.navbar{
+    background-color: #fcddec !important;
+}
+
+.nav-item a{
+    font-size: 22px;
+    color: black;
+}
+
+.nav-item a{
+  margin: 0px 15px !important;
+}
+    /* PAGE & INPUT STYLING */
+body {
+  background: linear-gradient(#FC589D, #FC5858);
+  color: #FFF;
+}
+
+.btn {
+  border: 1px solid #808080;
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 20px;
+  position: relative;
+  text-align: left;
+  border-radius: 3px;
+  -webkit-transition: background 600ms ease, color 600ms ease;
+  transition: background 600ms ease, color 600ms ease;
+}
+.btn span {
+  border: 1px solid #808080;
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: 12px;
+  border-radius: 5px;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: -5px;
+}
+
+input[type="radio"].toggle {
+  display: none;
+}
+input[type="radio"].toggle + label {
+  cursor: pointer;
+  min-width: 80px;
+}
+input[type="radio"].toggle + label:hover {
+  background: none;
+  color: #FFF;
+}
+input[type="radio"].toggle + label:after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  -webkit-transition: left 100ms cubic-bezier(0.77, 0, 0.175, 1);
+  transition: left 100ms cubic-bezier(0.77, 0, 0.175, 1);
+  width: 100%;
+  z-index: -1;
+}
+input[type="radio"].toggle.toggle-left + label {
+}
+input[type="radio"].toggle.toggle-left + label:after {
+  left: 100%;
+}
+input[type="radio"].toggle.toggle-right + label {
+  margin-left: 10px;
+}
+input[type="radio"].toggle.toggle-right + label:after {
+  left: -100%;
+}
+input[type="radio"].toggle:checked + label {
+  background: #FFF;
+  cursor: default;
+  color: #000;
+}
+input[type="radio"].toggle:checked + label:after {
+  left: 0;
+}
+
+/* ENDS */
+
+/* UPFORM STYLE STARTS*/
+.upform input:focus, select:focus, textarea:focus, button:focus {
+  outline: none;
+  border-color: blue !important;
+}
+.upform input, select, textarea {
+  background-color: transparent;
+  color: #000;
+}
+.upform {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+		            supported by Chrome and Opera */
+  max-width: 900px;
+  margin: 300px auto;
+  margin-bottom: 500px;
+  padding: 0 20px;
+}
+
+.upform .upform-main {
+}
+.upform .upform-main .input-block {
+  padding: 30px 0;
+  /* opacity: 0.25; */
+  cursor: default;
+}
+.upform .upform-main .input-block .label {
+  display: block;
+  font-size: 1.1em;
+  line-height: 30px;
+}
+.upform .upform-main .input-block .input-control {
+  margin: 20px 0;
+}
+.upform .upform-main .input-block .input-control input[type=text] {
+  border: none;
+  outline-width: 0;
+  border-bottom: 2px solid #CCC;
+  width: 100%;
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+
+/* .upform .upform-main .input-block.active {
+  opacity: 0;
+} */
+
+.upform .upform-footer {
+  margin-top: 60px;
+}
+.upform .upform-footer .btn {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+/* UPFORM STYLE ENDS*/
+
+</style>
+<body>
+<!-- NAV -->
+<!-- {/* <nav class="navbar navbar-expand-lg navbar-light bg-light"> */} -->
+  <nav class="navbar navbar-expand-lg" id='up'>
+  <!-- {/* <a class="navbar-brand" href="#">Navbar</a> */} -->
+  <img class='navbar-brand' src="https://w7.pngwing.com/pngs/376/902/png-transparent-woman-silhouette-female-woman-people-woman-vector-stock-photography.png" alt="" style="border-radius:20px; width:60px"/>
+  <buthrefn class="navbar-hrefggler" type="buthrefn" data-hrefggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="hrefggle navigation">
+      <span class="navbar-hrefggler-icon"></span>
+  </buthrefn>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auhref" style="align-items: center;">
+      <li class="nav-item active">
+          <a class="nav-a" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-a" href="/about">About <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-a" href="/appointment">Our Team</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-a" href="/ecom">Blogs</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Join Us
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Discord</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Instagram</a>
+        </div>
+    </li>
+      <!-- {/* <li class="nav-item">
+          <a class="nav-a disabled" href="#">Disabled</a>
+      </li> */} -->
+      </ul>
+  </div>
+  </nav>
+<!-- NAV -->
+    <div class="upform">
+
+    <form  method="POST", action="{{url_for('home')}}">
+  
+      <div class="upform-header"></div>
+  
+      <div class="upform-main">
+        <!--  -->
+        <div class="input-block">
+          <div class="label">How old are you?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="b" placeholder="Age(years)" autocomplete="off">
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Have you ever been pregnant?</div>
+          <div class="input-control">
+            <input id="toggle-on-q1" class="toggle toggle-left" name="c" value="1" type="radio">
+            <label for="toggle-on-q1" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q1" class="toggle toggle-right" name="c" value="0" type="radio">
+            <label for="toggle-off-q1" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Have you ever had an abortion, if yes how many? (if not, please enter 0)</div>
+          <div class="input-control">
+            <input id="toggle-on-q2" class="toggle toggle-left" name="d" value="1" type="radio">
+            <label for="toggle-on-q2" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q2" class="toggle toggle-right" name="d" value="0" type="radio">
+            <label for="toggle-off-q2" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Do you feel bloated in these past few weeks?</div>
+          <div class="input-control">
+            <input id="toggle-on-q3" class="toggle toggle-left" name="e" value="1" type="radio">
+            <label for="toggle-on-q3" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q3" class="toggle toggle-right" name="e" value="0" type="radio">
+            <label for="toggle-off-q3" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+        <!--  -->
+
+        <div class="input-block">
+          <div class="label">Do you get a lot of facial hair?</div>
+          <div class="input-control">
+            <input id="toggle-on-q4" class="toggle toggle-left" name="f" value="1" type="radio">
+            <label for="toggle-on-q4" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q4" class="toggle toggle-right" name="f" value="0" type="radio">
+            <label for="toggle-off-q4" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Do you have any chest hair?</div>
+          <div class="input-control">
+            <input id="toggle-on-q5" class="toggle toggle-left" name="g" value="1" type="radio">
+            <label for="toggle-on-q5" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q5" class="toggle toggle-right" name="g" value="0" type="radio">
+            <label for="toggle-off-q5" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Have you been facing difficulty in loosing weight?</div>
+          <div class="input-control">
+            <input id="toggle-on-q6" class="toggle toggle-left" name="h" value="1" type="radio">
+            <label for="toggle-on-q6" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q6" class="toggle toggle-right" name="h" value="0" type="radio">
+            <label for="toggle-off-q6" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Do you feel too moody?</div>
+          <div class="input-control">
+            <input id="toggle-on-q7" class="toggle toggle-left" name="i" value="1" type="radio">
+            <label for="toggle-on-q7" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q7" class="toggle toggle-right" name="i" value="0" type="radio">
+            <label for="toggle-off-q7" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">In general, do you feel depressed or stressed out at times?</div>
+          <div class="input-control">
+            <input id="toggle-on-q8" class="toggle toggle-left" name="j" value="1" type="radio">
+            <label for="toggle-on-q8" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q8" class="toggle toggle-right" name="j" value="0" type="radio">
+            <label for="toggle-off-q8" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">Do you sleep well at night?</div>
+          <div class="input-control">
+            <input id="toggle-on-q9" class="toggle toggle-left" name="k" value="1" type="radio">
+            <label for="toggle-on-q9" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q9" class="toggle toggle-right" name="k" value="0" type="radio">
+            <label for="toggle-off-q9" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">We know this could be depressing but have you recently gained weight</div>
+          <div class="input-control">
+            <input id="toggle-on-q10" class="toggle toggle-left" name="l" value="1" type="radio">
+            <label for="toggle-on-q10" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q10" class="toggle toggle-right" name="l" value="0" type="radio">
+            <label for="toggle-off-q10" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Have you seen your hair grow in the past couple of months?</div>
+          <div class="input-control">
+            <input id="toggle-on-q11" class="toggle toggle-left" name="m" value="1" type="radio">
+            <label for="toggle-on-q11" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q11" class="toggle toggle-right" name="m" value="0" type="radio">
+            <label for="toggle-off-q11" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+<!--  -->
+        <!--  -->
+        
+        <div class="input-block">
+          <div class="label">Has your skin darkened in the recent months?</div>
+          <div class="input-control">
+            <input id="toggle-on-q12" class="toggle toggle-left" name="n" value="1" type="radio">
+            <label for="toggle-on-q12" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q12" class="toggle toggle-right" name="n" value="0" type="radio">
+            <label for="toggle-off-q12" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+        <!--  -->
+        <div class="input-block">
+          <div class="label">Have you suffered from hair loss recently?</div>
+          <div class="input-control">
+            <input id="toggle-on-q13" class="toggle toggle-left" name="o" value="1" type="radio">
+            <label for="toggle-on-q13" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q13" class="toggle toggle-right" name="o" value="0" type="radio">
+            <label for="toggle-off-q13" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+  
+        <div class="input-block">
+          <div class="label">We know that pimples always pop up at the wrong times but is that frequent with you?</div>
+          <div class="input-control">
+            <input id="toggle-on-q14" class="toggle toggle-left" name="p" value="1" type="radio">
+            <label for="toggle-on-q14" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q14" class="toggle toggle-right" name="p" value="0" type="radio">
+            <label for="toggle-off-q14" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+  
+        
+        <div class="input-block">
+          <div class="label">Burger King could be awfully delicious at times but do you consume fast-food frequently?</div>
+          <div class="input-control">
+            <input id="toggle-on-q15" class="toggle toggle-left" name="q" value="1" type="radio">
+            <label for="toggle-on-q15" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q15" class="toggle toggle-right" name="q" value="0" type="radio">
+            <label for="toggle-off-q15" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">Do you exercise regularly?</div>
+          <div class="input-control">
+            <input id="toggle-on-q16" class="toggle toggle-left" name="r" value="1" type="radio">
+            <label for="toggle-on-q16" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q16" class="toggle toggle-right" name="r" value="0" type="radio">
+            <label for="toggle-off-q16" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+  
+
+        <!--  -->
+        <!--  -->
+
+        <div class="input-block">
+          <div class="label">How much do you weigh?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="s" placeholder="Weight(Kg)" autocomplete="off">
+          </div>
+        </div>
+
+
+        <div class="input-block">
+          <div class="label"> How tall are you?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="t" placeholder="Height(cm)" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">What is your BMI?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="u" placeholder="BMI" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">What is your blood group?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="v" placeholder="Blood group" autocomplete="off">
+          </div>
+        </div>
+        
+                
+        <div class="input-block">
+          <div class="label">  What is your pulse rate?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="w" placeholder="Pulse Rate(bpm)" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label"> In how many months, do you get your cycle?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="x" placeholder="Cycle length in months" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">How long does your cycle last?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="y" placeholder="Cycle length in days" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">  What's your marital status?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="z" placeholder="Marriage Status (Years)" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">Could you take your inchtape and tell us about your hip measurement? (inch)</div>
+          <div class="input-control">
+            <input type="text" class="required" name="za" placeholder="Hip Size in inch" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label"> We'll need the inchtape again. Now, tell us about your waist measurement? (inch)</div>
+          <div class="input-control">
+            <input type="text" class="required" name="zb" placeholder="Waist size in inch" autocomplete="off">
+          </div>
+        </div>
+      </div>
+  
+      <div class="upform-footer">
+        <button type="submit" value="result" class="btn btn-primary btn-lg" name="b" placeholder="Age(years)" required >Submit</button>
+      </div>
+  
+    </form>
+  
+  
+  </div>
+  <!-- JavaScript Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

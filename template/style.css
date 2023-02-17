@@ -1,0 +1,98 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+html {
+  margin: auto;
+  font-family: Poppins;
+  background: linear-gradient(#FC589D, #FC5858);
+  color: #ffffff;
+  font-size: 1.5em;
+  text-align: justify;
+}
+
+.heady {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  display: inline-block;
+  position: absolute;
+  background: white;
+  color: #ffffff;
+  text-align: center;
+}
+
+.logop {
+  width: 800px;
+  height: 150px;
+  background: url("{{ url_for('static', filename='logo.png')}}");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+}
+
+.cardy {
+  vertical-align: bottom;
+  display: inline-flex;
+}
+
+
+.itemImg {
+  width: 500px;
+  height: 350px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  margin: 20px auto 15px;
+
+}
+
+
+#img01 {
+  background-image: url("static/Group\ 7.png");
+  
+}
+
+#img02 {
+  background-image: url("static/Group\ 5.png");
+}
+
+#img03 {
+  background-image: url("static/Group\ 10.png");
+}
+
+#img04 {
+  background-image: url("static/Group\ 8.png");
+}
+
+.sections{
+  height: 100%;
+  position: relative;
+  width: 960px;
+  top: 120px;
+  margin: 40px auto;
+} 
+
+.containerz {
+  width: 1100px;
+  height: 2173px;
+  top: 120px;
+  margin: 30px auto;
+  position: relative;
+}
+
+
+.questions {
+    box-shadow: 2px 2px 5px grey;
+    vertical-align: bottom;
+    background: #ffffff;
+    width: 70%;
+    height: 300px;
+    border-radius: 10px;
+    border: 1px solid #333333;
+    text-align: center;
+    margin-bottom: 40px;
+    border-width: 0px;
+}
+
